@@ -1,0 +1,73 @@
+{
+  "report_name": "Preliminary SOC 2 Control Assessment",
+  "total_controls_reviewed": 2,
+  "controls_requiring_review": 2,
+  "controls": [
+    {
+      "control_id": "CC6.1",
+      "control_name": "Logical and physical access controls",
+      "assessment_status": "REVIEW_REQUIRED",
+      "related_findings": [
+        {
+          "rule_id": "IAM-001",
+          "title": "Overly permissive IAM policy",
+          "severity": "HIGH",
+          "evidence": "Statement 1 allows all actions on all resources.",
+          "remediation": "Apply least privilege by specifying only the required actions and resources."
+        },
+        {
+          "rule_id": "CT-002",
+          "title": "IAM access key created",
+          "severity": "MEDIUM",
+          "evidence": "Event 'CreateAccessKey' was recorded at 2026-10-25T14:30:00Z for user 'sample-user' from IP 203.0.113.25.",
+          "remediation": "Verify that the access key creation was authorized. Follow organizational procedures for key storage and rotation."
+        }
+      ],
+      "evidence_records": [
+        {
+          "evidence_id": "EVD-001",
+          "control_id": "CC6.1",
+          "evidence_type": "IAM policy review",
+          "source": "sample_data/iam_policy_wildcard.json",
+          "description": "Simulated IAM policy contains wildcard actions and resources.",
+          "collection_date": "2026-10-26",
+          "review_status": "PENDING_REVIEW",
+          "reviewer_notes": "Review the permissions and document the required corrective action."
+        }
+      ],
+      "evidence_count": 1,
+      "pending_evidence_reviews": 1,
+      "assessment_note": "Preliminary project mapping only. Review control design, operating effectiveness, and supporting evidence before drawing conclusions."
+    },
+    {
+      "control_id": "CC7.2",
+      "control_name": "System monitoring and anomaly identification",
+      "assessment_status": "REVIEW_REQUIRED",
+      "related_findings": [
+        {
+          "rule_id": "CT-001",
+          "title": "CloudTrail logging stopped",
+          "severity": "HIGH",
+          "evidence": "Event 'StopLogging' was recorded at 2026-10-25T14:35:00Z for user 'sample-user' from IP 203.0.113.25.",
+          "remediation": "Verify whether the change was authorized and restore CloudTrail logging if it was stopped unexpectedly."
+        }
+      ],
+      "evidence_records": [
+        {
+          "evidence_id": "EVD-002",
+          "control_id": "CC7.2",
+          "evidence_type": "CloudTrail event review",
+          "source": "sample_data/cloudtrail_events.json",
+          "description": "Simulated CloudTrail event records a StopLogging operation.",
+          "collection_date": "2026-10-26",
+          "review_status": "PENDING_REVIEW",
+          "reviewer_notes": "Determine whether the logging change was authorized and document follow-up."
+        }
+      ],
+      "evidence_count": 1,
+      "pending_evidence_reviews": 1,
+      "assessment_note": "Preliminary project mapping only. Review control design, operating effectiveness, and supporting evidence before drawing conclusions."
+    }
+  ],
+  "disclaimer": "This report uses simulated data and preliminary control mappings. It does not establish SOC 2 compliance or replace an independent audit."
+}

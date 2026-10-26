@@ -1,0 +1,34 @@
+{
+  "project": "AWS Cloud Security & Compliance Project",
+  "total_findings": 3,
+  "severity_summary": {
+    "HIGH": 2,
+    "MEDIUM": 1,
+    "LOW": 0
+  },
+  "findings": [
+    {
+      "rule_id": "IAM-001",
+      "title": "Overly permissive IAM policy",
+      "severity": "HIGH",
+      "evidence": "Statement 1 allows all actions on all resources.",
+      "remediation": "Apply least privilege by specifying only the required actions and resources.",
+      "soc2_reference": "CC6.1 - preliminary logical access control mapping; validate applicability against the organization's controls."
+    },
+    {
+      "rule_id": "CT-002",
+      "title": "IAM access key created",
+      "severity": "MEDIUM",
+      "evidence": "Event 'CreateAccessKey' was recorded at 2026-10-25T14:30:00Z for user 'sample-user' from IP 203.0.113.25.",
+      "remediation": "Verify that the access key creation was authorized. Follow organizational procedures for key storage and rotation."
+    },
+    {
+      "rule_id": "CT-001",
+      "title": "CloudTrail logging stopped",
+      "severity": "HIGH",
+      "evidence": "Event 'StopLogging' was recorded at 2026-10-25T14:35:00Z for user 'sample-user' from IP 203.0.113.25.",
+      "remediation": "Verify whether the change was authorized and restore CloudTrail logging if it was stopped unexpectedly."
+    }
+  ],
+  "note": "Findings are based on basic detection rules and simulated data. This report is not a formal security audit or SOC 2 attestation."
+}

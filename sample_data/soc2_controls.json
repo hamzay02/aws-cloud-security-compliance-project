@@ -1,0 +1,16 @@
+﻿[
+  {
+    "control_id": "CC6.1",
+    "control_name": "Logical and physical access controls",
+    "description": "Organizations implement logical access security measures to protect information and systems against unauthorized access.",
+    "relevant_finding_rules": ["IAM-001", "IAM-002", "CT-002"],
+    "assessment_note": "Preliminary mapping. Validate applicability against the organization's control design and audit scope."
+  },
+  {
+    "control_id": "CC7.2",
+    "control_name": "System monitoring and anomaly identification",
+    "description": "Organizations monitor system components and identify anomalies that may indicate security events.",
+    "relevant_finding_rules": ["CT-001"],
+    "assessment_note": "Preliminary mapping. Review logging configuration, monitoring procedures, and supporting evidence before assessing control effectiveness."
+  }
+]

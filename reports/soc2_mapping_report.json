@@ -1,0 +1,41 @@
+[
+  {
+    "control_id": "CC6.1",
+    "control_name": "Logical and physical access controls",
+    "description": "Organizations implement logical access security measures to protect information and systems against unauthorized access.",
+    "related_findings": [
+      {
+        "rule_id": "IAM-001",
+        "title": "Overly permissive IAM policy",
+        "severity": "HIGH",
+        "evidence": "Statement 1 allows all actions on all resources.",
+        "remediation": "Apply least privilege by specifying only the required actions and resources."
+      },
+      {
+        "rule_id": "CT-002",
+        "title": "IAM access key created",
+        "severity": "MEDIUM",
+        "evidence": "Event 'CreateAccessKey' was recorded at 2026-10-25T14:30:00Z for user 'sample-user' from IP 203.0.113.25.",
+        "remediation": "Verify that the access key creation was authorized. Follow organizational procedures for key storage and rotation."
+      }
+    ],
+    "assessment_note": "Preliminary mapping. Validate applicability against the organization's control design and audit scope.",
+    "assessment_status": "REVIEW_REQUIRED"
+  },
+  {
+    "control_id": "CC7.2",
+    "control_name": "System monitoring and anomaly identification",
+    "description": "Organizations monitor system components and identify anomalies that may indicate security events.",
+    "related_findings": [
+      {
+        "rule_id": "CT-001",
+        "title": "CloudTrail logging stopped",
+        "severity": "HIGH",
+        "evidence": "Event 'StopLogging' was recorded at 2026-10-25T14:35:00Z for user 'sample-user' from IP 203.0.113.25.",
+        "remediation": "Verify whether the change was authorized and restore CloudTrail logging if it was stopped unexpectedly."
+      }
+    ],
+    "assessment_note": "Preliminary mapping. Review logging configuration, monitoring procedures, and supporting evidence before assessing control effectiveness.",
+    "assessment_status": "REVIEW_REQUIRED"
+  }
+]

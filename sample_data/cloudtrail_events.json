@@ -1,0 +1,26 @@
+﻿[
+  {
+    "eventTime": "2026-10-25T14:30:00Z",
+    "eventSource": "iam.amazonaws.com",
+    "eventName": "CreateAccessKey",
+    "awsRegion": "us-east-1",
+    "userIdentity": {
+      "type": "IAMUser",
+      "userName": "sample-user"
+    },
+    "sourceIPAddress": "203.0.113.25",
+    "errorCode": null
+  },
+  {
+    "eventTime": "2026-10-25T14:35:00Z",
+    "eventSource": "cloudtrail.amazonaws.com",
+    "eventName": "StopLogging",
+    "awsRegion": "us-east-1",
+    "userIdentity": {
+      "type": "IAMUser",
+      "userName": "sample-user"
+    },
+    "sourceIPAddress": "203.0.113.25",
+    "errorCode": null
+  }
+]

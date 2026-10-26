@@ -1,19 +1,19 @@
 {
   "project": "AWS Cloud Security & Compliance Project",
-  "total_findings": 3,
+  "total_findings": 6,
   "severity_summary": {
-    "HIGH": 2,
+    "HIGH": 5,
     "MEDIUM": 1,
     "LOW": 0
   },
   "findings": [
     {
       "rule_id": "IAM-001",
-      "title": "Overly permissive IAM policy",
+      "title": "All actions allowed on all resources",
       "severity": "HIGH",
       "evidence": "Statement 1 allows all actions on all resources.",
-      "remediation": "Apply least privilege by specifying only the required actions and resources.",
-      "soc2_reference": "CC6.1 - preliminary logical access control mapping; validate applicability against the organization's controls."
+      "remediation": "Apply least privilege by specifying only required actions and resources.",
+      "soc2_reference": "CC6.1 - preliminary mapping; review applicability."
     },
     {
       "rule_id": "CT-002",
@@ -28,6 +28,27 @@
       "severity": "HIGH",
       "evidence": "Event 'StopLogging' was recorded at 2026-10-25T14:35:00Z for user 'sample-user' from IP 203.0.113.25.",
       "remediation": "Verify whether the change was authorized and restore CloudTrail logging if it was stopped unexpectedly."
+    },
+    {
+      "rule_id": "CFG-001",
+      "title": "Storage bucket allows public access",
+      "severity": "HIGH",
+      "evidence": "Resource 'sample-public-bucket': public_access is enabled.",
+      "remediation": "Disable public access unless explicitly required and approved. Review bucket policies and public access settings."
+    },
+    {
+      "rule_id": "CFG-003",
+      "title": "Storage encryption is not enabled",
+      "severity": "HIGH",
+      "evidence": "Resource 'sample-public-bucket': encryption_enabled is false.",
+      "remediation": "Enable appropriate encryption at rest and verify the organization's encryption requirements."
+    },
+    {
+      "rule_id": "CFG-002",
+      "title": "Sensitive port open to the internet",
+      "severity": "HIGH",
+      "evidence": "Resource 'sample-admin-security-group': Port 22 allows ingress from 0.0.0.0/0.",
+      "remediation": "Restrict the source CIDR to trusted addresses or approved networks and verify that the port is required."
     }
   ],
   "note": "Findings are based on basic detection rules and simulated data. This report is not a formal security audit or SOC 2 attestation."

@@ -1,0 +1,29 @@
+
+[
+  {
+    "resource_id": "sample-public-bucket",
+    "resource_type": "storage_bucket",
+    "public_access": true,
+    "encryption_enabled": false
+  },
+  {
+    "resource_id": "sample-restricted-bucket",
+    "resource_type": "storage_bucket",
+    "public_access": false,
+    "encryption_enabled": true
+  },
+  {
+    "resource_id": "sample-admin-security-group",
+    "resource_type": "security_group",
+    "ingress_rules": [
+      {
+        "port": 22,
+        "source_cidr": "0.0.0.0/0"
+      },
+      {
+        "port": 443,
+        "source_cidr": "0.0.0.0/0"
+      }
+    ]
+  }
+]

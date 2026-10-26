@@ -1,268 +1,135 @@
 ﻿# AWS Cloud Security & Compliance Automation
 
-
-
-A Python-based portfolio project that analyzes simulated AWS security data, identifies potential risks, maps findings to preliminary SOC 2 control references, and tracks supporting evidence for review.
-
-
+A Python-based portfolio project that analyzes simulated AWS security data, identifies potential risks, maps findings to preliminary SOC 2 control references, and tracks supporting evidence and remediation status.
 
 ## Project Overview
 
+This project demonstrates practical skills in Python, cloud security analysis, security reporting, compliance-support workflows, input validation, and automated testing.
 
-
-This project demonstrates practical skills in Python, cloud security analysis, compliance-support workflows, evidence documentation, and automated testing. It runs locally using simulated data and does not require deploying resources to AWS.
-
-
+The workflow runs locally using simulated JSON data. It does not connect to an AWS account or deploy cloud resources.
 
 ## Features
 
-
-
-- **IAM Policy Analysis:** Detects selected overly permissive IAM policy patterns, including wildcard actions and resources.
-
-- **CloudTrail Event Analysis:** Flags selected security-relevant events, including stopped logging and IAM access key creation.
-
-- **Security Reporting:** Generates JSON reports containing findings, severity summaries, and remediation guidance.
-
-- **SOC 2 Control Mapping:** Maps selected security findings to preliminary SOC 2 control references, including CC6.1 and CC7.2.
-
-- **Evidence Tracking:** Records evidence sources, collection dates, review statuses, and reviewer notes.
-
-- **Assessment Reporting:** Combines control mappings and evidence records into an assessment report for review.
-
-- **Automated Testing:** Uses pytest to test detection rules, evidence tracking, report generation, and workflow functionality.
-
+- **IAM Policy Analysis:** Detects selected risky IAM policy patterns, including wildcard actions, unrestricted resource scope, and potentially risky `NotAction` statements.
+- **CloudTrail Event Analysis:** Identifies selected security-relevant events, including stopped logging, access key creation, failed console logins, and security group ingress changes.
+- **Cloud Configuration Analysis:** Flags simulated storage buckets with public access or disabled encryption, and security group rules exposing selected sensitive ports to `0.0.0.0/0`.
+- **Combined Security Reporting:** Combines IAM, CloudTrail, and cloud configuration findings into a JSON report with severity levels and remediation guidance.
+- **Markdown Security Summary:** Generates a readable report with finding totals, severity counts, and finding details.
+- **SOC 2 Control Mapping:** Maps selected findings to preliminary SOC 2 control references for review.
+- **Evidence Tracking:** Validates evidence records and tracks collection dates, review statuses, reviewer notes, remediation owners, due dates, and remediation status.
+- **Assessment Reporting:** Combines control mappings and related evidence into an assessment report for review.
+- **Input Validation:** Checks for malformed or unexpected input structures, invalid dates, duplicate evidence IDs, and invalid status values.
+- **Automated Testing:** Uses pytest to test detection rules, input validation, evidence tracking, and report generation.
 - **Continuous Integration:** Uses GitHub Actions to run automated tests on pushes and pull requests.
-
-- **Cost-Conscious Execution:** Uses simulated input data and runs locally without requiring paid AWS resources.
-
-
 
 ## Technologies
 
-
-
 - Python
-
 - pytest
-
 - JSON
-
-- Git
-
-- GitHub
-
+- Git and GitHub
 - GitHub Actions
-
-
 
 ## Project Structure
 
-
-
 ```text
-
 aws-cloud-security-compliance-project/
-
-├── .github/
-
-│   └── workflows/
-
-│       └── tests.yml
-
-├── reports/
-
-│   ├── security\_report.json
-
-│   ├── soc2\_assessment\_report.json
-
-│   ├── soc2\_evidence\_report.json
-
-│   └── soc2\_mapping\_report.json
-
-├── sample\_data/
-
-│   ├── cloudtrail\_events.json
-
-│   ├── iam\_policy\_restricted.json
-
-│   ├── iam\_policy\_wildcard.json
-
-│   ├── soc2\_controls.json
-
-│   └── soc2\_evidence.json
-
-├── src/
-
-│   ├── cloudtrail\_analyzer.py
-
-│   ├── iam\_analyzer.py
-
-│   ├── report\_generator.py
-
-│   ├── run\_all.py
-
-│   ├── soc2\_assessment.py
-
-│   ├── soc2\_evidence\_tracker.py
-
-│   └── soc2\_mapper.py
-
-├── tests/
-
-├── .gitignore
-
-├── README.md
-
-└── requirements.txt
-
+|-- .github/
+|   |-- workflows/
+|   |   |-- tests.yml
+|-- reports/
+|   |-- security_report.json
+|   |-- security_summary.md
+|   |-- soc2_assessment_report.json
+|   |-- soc2_evidence_report.json
+|   |-- soc2_mapping_report.json
+|-- sample_data/
+|   |-- cloud_config.json
+|   |-- cloudtrail_events.json
+|   |-- iam_policy_restricted.json
+|   |-- iam_policy_wildcard.json
+|   |-- soc2_controls.json
+|   |-- soc2_evidence.json
+|-- src/
+|   |-- cloud_config_analyzer.py
+|   |-- cloudtrail_analyzer.py
+|   |-- iam_analyzer.py
+|   |-- report_generator.py
+|   |-- run_all.py
+|   |-- soc2_assessment.py
+|   |-- soc2_evidence_tracker.py
+|   |-- soc2_mapper.py
+|-- tests/
+|-- .gitignore
+|-- README.md
+|-- requirements.txt
 ```
-
-
 
 ## Getting Started
 
-
-
-### 1. Set Up the Environment
-
-
-
-Install Python and Git, then clone the repository:
-
-
+### 1. Clone the repository
 
 ```powershell
-
 git clone https://github.com/hamzay02/aws-cloud-security-compliance-project.git
-
 cd aws-cloud-security-compliance-project
-
 ```
 
-
-
-Create and activate a virtual environment in PowerShell:
-
-
+### 2. Create and activate a virtual environment
 
 ```powershell
-
 python -m venv .venv
-
-.\\.venv\\Scripts\\Activate.ps1
-
+.\.venv\Scripts\Activate.ps1
 ```
 
-
-
-Install the project dependencies:
-
-
+### 3. Install dependencies
 
 ```powershell
-
 python -m pip install -r requirements.txt
-
 ```
 
-
-
-### 2. Run the Workflow
-
-
-
-From the project root, run:
-
-
+### 4. Run the workflow
 
 ```powershell
-
-python -m src.run\_all
-
+python -m src.run_all
 ```
 
+The workflow analyzes the sample data and generates reports in the `reports/` directory, including the combined JSON security report and Markdown summary.
 
-
-The workflow analyzes the sample data and generates JSON reports in the `reports/` directory.
-
-
-
-### 3. Run the Tests
-
-
-
-Run the automated test suite:
-
-
+### 5. Run the tests
 
 ```powershell
-
 python -m pytest -v
-
 ```
 
-
-
-The project includes 23 local automated tests. GitHub Actions is configured to run the test suite automatically when changes are pushed or pull requests are opened. The workflow has completed successfully on GitHub.
-
-
+The project has a local test suite covering detection rules, input validation, evidence tracking, and report generation. GitHub Actions is configured to run the test suite on pushes and pull requests.
 
 ## Sample Results
 
+The included simulated dataset is expected to produce the following results:
 
+- **6 security findings**
+- **5 High-severity findings**
+- **1 Medium-severity finding**
+- **2 SOC 2 controls requiring review**
+- **2 evidence records**
 
-The included simulated dataset currently produces:
+These results describe the included sample data only and do not represent findings from a live AWS environment. Run the workflow to regenerate the reports and confirm the current results.
 
+## Detection Scope and Limitations
 
-
-- **3 security findings**
-
-- **2 controls requiring review**
-
-- **2 evidence records pending review**
-
-
-
-These results describe the sample dataset only. They do not represent findings from a live AWS environment.
-
-
-
-## Limitations
-
-
-
-- Detection rules cover selected patterns and do not replace comprehensive AWS IAM policy evaluation or a full security assessment.
-
-- CloudTrail events and IAM policies are simulated rather than collected from a live AWS account.
-
-- SOC 2 control mappings are preliminary examples and require validation against applicable criteria and organizational control design.
-
-- Evidence records and generated reports do not establish SOC 2 compliance, control effectiveness, or completion of a formal audit.
-
-
+- Detection rules cover selected patterns and do not replace comprehensive IAM policy evaluation or a full security assessment.
+- CloudTrail events, IAM policies, and cloud configuration records are simulated; the project does not collect live AWS telemetry.
+- Cloud configuration checks cover selected storage settings and selected sensitive ports exposed to the IPv4 CIDR `0.0.0.0/0`. They do not provide comprehensive network analysis or IPv6 exposure detection.
+- SOC 2 control mappings are preliminary examples and should be validated against applicable criteria and an organization's control design.
+- Evidence tracking supports documentation and review workflows but does not establish control effectiveness or compliance.
+- Generated reports do not constitute a formal security audit or SOC 2 attestation.
 
 ## Future Improvements
 
-
-
-- Expand detection rules and input validation.
-
-- Add tests for invalid JSON and unexpected input structures.
-
-- Improve evidence review workflows and remediation tracking.
-
-- Add Markdown summaries to make security findings easier to review.
-
-- Expand security checks to cover additional cloud configuration risks.
-
-
+- Expand cloud security detection rules and configuration checks.
+- Add support for additional remediation workflows.
+- Improve security reporting and evidence review capabilities.
 
 ## Disclaimer
 
-
-
 This is an educational portfolio project that uses simulated data. It is not an official compliance tool, does not constitute a formal security audit, and does not provide a SOC 2 attestation.
-
-
-

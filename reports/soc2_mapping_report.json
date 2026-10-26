@@ -6,10 +6,10 @@
     "related_findings": [
       {
         "rule_id": "IAM-001",
-        "title": "Overly permissive IAM policy",
+        "title": "All actions allowed on all resources",
         "severity": "HIGH",
         "evidence": "Statement 1 allows all actions on all resources.",
-        "remediation": "Apply least privilege by specifying only the required actions and resources."
+        "remediation": "Apply least privilege by specifying only required actions and resources."
       },
       {
         "rule_id": "CT-002",

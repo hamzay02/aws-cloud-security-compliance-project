@@ -30,7 +30,7 @@ This project demonstrates practical skills in Python, cloud security analysis, c
 
 \- \*\*Assessment Reporting:\*\* Combines control mappings and evidence records into an assessment report for review.
 
-\- \*\*Automated Testing:\*\* Uses pytest to validate detection rules, evidence tracking, report generation, and workflow functionality.
+\- \*\*Automated Testing:\*\* Uses pytest to test detection rules, evidence tracking, report generation, and workflow functionality.
 
 \- \*\*Continuous Integration:\*\* Uses GitHub Actions to run automated tests on pushes and pull requests.
 
@@ -48,7 +48,9 @@ This project demonstrates practical skills in Python, cloud security analysis, c
 
 \- JSON
 
-\- Git and GitHub
+\- Git
+
+\- GitHub
 
 \- GitHub Actions
 
@@ -154,7 +156,7 @@ python -m venv .venv
 
 
 
-Install the project dependency:
+Install the project dependencies:
 
 
 
@@ -190,6 +192,10 @@ The workflow analyzes the sample data and generates JSON reports in the `reports
 
 
 
+Run the automated test suite:
+
+
+
 ```powershell
 
 python -m pytest -v
@@ -198,7 +204,7 @@ python -m pytest -v
 
 
 
-The project has 23 local automated tests. GitHub Actions is configured to run the test suite automatically when changes are pushed or pull requests are opened.
+The project includes 23 local automated tests. GitHub Actions is configured to run the test suite automatically when changes are pushed or pull requests are opened. The workflow has completed successfully on GitHub.
 
 
 
@@ -240,13 +246,15 @@ These results describe the sample dataset only. They do not represent findings f
 
 
 
-\- Expand detection rules and validation for malformed or unexpected input.
+\- Expand detection rules and input validation.
 
-\- Add tests for invalid JSON and unsupported input structures.
+\- Add tests for invalid JSON and unexpected input structures.
 
 \- Improve evidence review workflows and remediation tracking.
 
 \- Add Markdown summaries to make security findings easier to review.
+
+\- Expand security checks to cover additional cloud configuration risks.
 
 
 
@@ -255,6 +263,4 @@ These results describe the sample dataset only. They do not represent findings f
 
 
 This is an educational portfolio project that uses simulated data. It is not an official compliance tool, does not constitute a formal security audit, and does not provide a SOC 2 attestation.
-
-
 

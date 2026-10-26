@@ -37,6 +37,10 @@ aws-cloud-security-compliance-project/
 |-- .github/
 |   |-- workflows/
 |   |   |-- tests.yml
+|-- docs/
+|   |-- architecture.md
+|   |-- images/
+|       |-- security-analysis.png
 |-- reports/
 |   |-- security_report.json
 |   |-- security_summary.md
@@ -102,6 +106,12 @@ python -m pytest -v
 ```
 
 The project has a local test suite covering detection rules, input validation, evidence tracking, and report generation. GitHub Actions is configured to run the test suite on pushes and pull requests.
+
+## Example Run
+
+The screenshot below shows the local security and compliance-support workflow completing successfully.
+
+![Security analysis workflow output](docs/images/security-analysis.png)
 
 ## Sample Results
 

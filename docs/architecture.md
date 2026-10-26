@@ -161,6 +161,14 @@ Contains automated pytest tests that verify detection rules, input validation, e
 \- `requirements.txt` — Lists the Python dependencies needed to run the project.
 
 
+### `docs/images/`
+
+Contains screenshots that demonstrate the project workflow and its generated output.
+
+- `security-analysis.png` — Screenshot of the security and compliance-support workflow running locally.
+
+
+
 
 \## How It Works
 
